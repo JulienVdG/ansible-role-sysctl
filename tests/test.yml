@@ -1,0 +1,4 @@
+---
+- hosts: host_test
+  roles:
+    - ansible-role-sysctl
