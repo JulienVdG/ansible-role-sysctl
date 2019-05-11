@@ -41,13 +41,6 @@
                                                   # If you set kernel.modules_disabled=1 you're not able to load new netfilter/iptable
                                                   # modules anymore (at least on Ubuntu 16.04)! So "ufw" would fail to start if
                                                   # it is loaded afterwards.
-# Add this to "sysctl_settings" to turn off ipv6 autoconfiguration:
-# "net.ipv6.conf.default.autoconf": 0
-# "net.ipv6.conf.all.autoconf": 0
-
-# Add this to "sysctl_settings" to enable ipv6 privacy addressing
-# "net.ipv6.conf.default.use_tempaddr": 2
-# "net.ipv6.conf.all.use_tempaddr": 2
 sysctl_default_settings:
   "net.ipv4.tcp_syncookies": 1                    # Enable syn flood protection
   "net.ipv4.conf.all.accept_source_route": 0      # Ignore source-routed packets
@@ -79,7 +72,22 @@ sysctl_default_settings:
   "kernel.perf_event_paranoid": 2                 # Set perf only available to root
   "kernel.yama.ptrace_scope": 1                   # Set ptrace protections
 
-
 sysctl_settings: {}
 sysctl_group_settings: {}
 sysctl_host_settings: {}
+
+# Add this to "sysctl_settings" to turn off ipv6 autoconfiguration:
+sysctl_no_ipv6_autoconf:
+  "net.ipv6.conf.default.autoconf": 0
+  "net.ipv6.conf.all.autoconf": 0
+
+# Add this to "sysctl_settings" to enable ipv6 privacy addressing
+sysctl_ipv6_use_tempaddr:
+  "net.ipv6.conf.default.use_tempaddr": 2
+  "net.ipv6.conf.all.use_tempaddr": 2
+
+# Add this to "sysctl_settings" to allow to route packets between interfaces
+sysctl_router:
+  "net.ipv4.ip_forward": 1
+  "net.ipv6.conf.default.forwarding": 1
+  "net.ipv6.conf.all.forwarding": 1

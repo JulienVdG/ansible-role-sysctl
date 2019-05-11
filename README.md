@@ -6,6 +6,8 @@ Applies sysctl settings.
 Role Variables
 --------------
 
+### Role configuration
+
 `sysctl_default_settings` : The default configuration for sysctl.
 
 You can override this variable to change the default values (unless you use `hash_behaviour=merge`).
@@ -25,6 +27,20 @@ The 3 following variables are merged with `sysctl_default_settings` to build the
 
 `sysctl_host_settings` : This variable should be set for a host to update the settings for that host.
 
+### Configuration snippets
+
+`sysctl_no_ipv6_autoconf` : Add this to `sysctl_settings` to turn off ipv6 autoconfiguration.
+
+`sysctl_ipv6_use_tempaddr`: Add this to `sysctl_settings` to enable ipv6 privacy addressing.
+
+`sysctl_router` : Add this to `sysctl_settings` to allow to route packets between interfaces.
+
+#### Examples
+
+To enable a group to be a router, add the following to your group vars:
+```
+sysctl_group_settings: '{{ sysctl_router }}'
+```
 
 Dependencies
 ------------
