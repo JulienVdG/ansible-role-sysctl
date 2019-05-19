@@ -6,7 +6,7 @@ This file describe the manual step to test the role.
 ## Setup
 
 - Create a host for testing (a vm, a container, an instance on a cloud provider...)
-- Update the `inventory` file to configure your new host, add `TODO become` if needed.
+- Update the `inventory` file to configure your new host, add `ansible_become=yes` if needed.
 
 ## Test1 : bootstrap
 

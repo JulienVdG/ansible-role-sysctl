@@ -51,6 +51,7 @@ Example Playbook
 ----------------
 
     - hosts: servers
+      become: yes
       roles:
          - { role: ansible-role-sysctl }
 
